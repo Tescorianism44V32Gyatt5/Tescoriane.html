@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Pasaż Tesco – Apple (O.R.D.)</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+  }
+  #map {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    background: #e0e0e0;
+    border: 2px solid #333;
+    border-radius: 8px;
+  }
+  .store {
+    position: absolute;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+  }
+  /* Kolory stref */
+  .spożywcza { background: #4CAF50; }
+  .technologiczna { background: #2196F3; }
+  .rozrywka { background: #FF9800; }
+  .usługi { background: #9C27B0; }
+  .historyczna { background: #795548; }
+
+  #legend {
+    width: 800px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+  }
+  .color-box {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border: 1px solid #333;
+  }
+  #info {
+    width: 800px;
+    margin: 10px auto;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #333;
+    border-radius: 5px;
+    min-height: 40px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Pasaż Tesco – Apple (O.R.D.)</h1>
+
+<div id="map">
+  <!-- Przykładowe sklepy -->
+  <div class="store spożywcza" style="top:50px; left:50px;" data-name="Tesco Hypermarket" data-year="2015">Tesco Hypermarket</div>
+  <div class="store technologiczna" style="top:50px; left:200px;" data-name="Apple Watch" data-year="2015">Apple Watch</div>
+  <div class="store rozrywka" style="top:150px; left:50px;" data-name="Kino TKNGTSC" data-year="2015">Kino TKNGTSC</div>
+  <div class="store usługi" style="top:150px; left:200px;" data-name="Bank Pekao" data-year="2015">Bank Pekao</div>
+  <div class="store historyczna" style="top:250px; left:50px;" data-name="Salon n+ (2005)" data-year="2005">Salon n+ (2005)</div>
+</div>
+
+<div id="legend">
+  <div class="legend-item"><div class="color-box spożywcza"></div> Spożywcza</div>
+  <div class="legend-item"><div class="color-box technologiczna"></div> Technologiczna</div>
+  <div class="legend-item"><div class="color-box rozrywka"></div> Rozrywka</div>
+  <div class="legend-item"><div class="color-box usługi"></div> Usługi</div>
+  <div class="legend-item"><div class="color-box historyczna"></div> Historyczna / Nieprawdziwa</div>
+</div>
+
+<div id="info">Kliknij na sklep, aby zobaczyć szczegóły</div>
+
+<script>
+  const stores = document.querySelectorAll('.store');
+  const info = document.getElementById('info');
+
+  stores.forEach(store => {
+    store.addEventListener('click', () => {
+      const name = store.getAttribute('data-name');
+      const year = store.getAttribute('data-year');
+      info.textContent = `${name} – Rok założenia / epoka: ${year}`;
+    });
+  });
+</script>
+
+</body>
+</html>
